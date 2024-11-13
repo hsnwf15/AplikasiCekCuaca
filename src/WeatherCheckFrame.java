@@ -30,24 +30,25 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lblWindSpeed = new javax.swing.JLabel();
+        lblHumidity = new javax.swing.JLabel();
+        favoritesComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        weatherTable = new javax.swing.JTable();
+        btnSaveToCSV = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblTemp = new javax.swing.JLabel();
+        lblCondition = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblCity = new javax.swing.JLabel();
+        btnAddToFavorites = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        inputCity = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        lblIcon = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,37 +82,39 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 75);
         jPanel4.add(jLabel5, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("-");
+        lblWindSpeed.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWindSpeed.setForeground(new java.awt.Color(255, 255, 255));
+        lblWindSpeed.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblWindSpeed.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 42;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
-        jPanel4.add(jLabel1, gridBagConstraints);
+        jPanel4.add(lblWindSpeed, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("-");
+        lblHumidity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHumidity.setForeground(new java.awt.Color(255, 255, 255));
+        lblHumidity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblHumidity.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 42;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
-        jPanel4.add(jLabel2, gridBagConstraints);
+        jPanel4.add(lblHumidity, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 42;
-        jPanel4.add(jComboBox1, gridBagConstraints);
+        jPanel4.add(favoritesComboBox, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,7 +127,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         jPanel4.add(jLabel3, gridBagConstraints);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        weatherTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -135,12 +138,12 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(weatherTable);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 42;
         gridBagConstraints.ipady = 130;
@@ -148,12 +151,19 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         jPanel4.add(jScrollPane1, gridBagConstraints);
 
-        jButton2.setText("Simpan ke CSV");
+        btnSaveToCSV.setText("Simpan ke CSV");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        jPanel4.add(btnSaveToCSV, gridBagConstraints);
+
+        btnReset.setText("Reset");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        jPanel4.add(jButton2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 8);
+        jPanel4.add(btnReset, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -166,42 +176,42 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("-");
+        lblTemp.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTemp.setForeground(new java.awt.Color(255, 255, 255));
+        lblTemp.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel5.add(jLabel11, gridBagConstraints);
+        jPanel5.add(lblTemp, gridBagConstraints);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("-");
+        lblCondition.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCondition.setForeground(new java.awt.Color(255, 255, 255));
+        lblCondition.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel5.add(jLabel12, gridBagConstraints);
+        jPanel5.add(lblCondition, gridBagConstraints);
 
         jPanel1.setBackground(new java.awt.Color(99, 126, 190));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("-");
+        lblCity.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCity.setForeground(new java.awt.Color(255, 255, 255));
+        lblCity.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 6);
-        jPanel1.add(jLabel10, gridBagConstraints);
+        jPanel1.add(lblCity, gridBagConstraints);
 
-        jButton1.setText("Favorit");
+        btnAddToFavorites.setText("Favorit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(btnAddToFavorites, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -228,14 +238,14 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 9);
-        jPanel2.add(jTextField1, gridBagConstraints);
+        jPanel2.add(inputCity, gridBagConstraints);
 
-        jButton3.setText("Cari");
+        btnSearch.setText("Cari");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel2.add(jButton3, gridBagConstraints);
+        jPanel2.add(btnSearch, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -245,13 +255,13 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 4, 0);
         jPanel5.add(jPanel2, gridBagConstraints);
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("icon");
+        lblIcon.setForeground(new java.awt.Color(255, 255, 255));
+        lblIcon.setText("icon");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel5.add(jLabel7, gridBagConstraints);
+        jPanel5.add(lblIcon, gridBagConstraints);
 
         jButton4.setText("Tambah ke Tabel");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -317,28 +327,29 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAddToFavorites;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSaveToCSV;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> favoritesComboBox;
+    private javax.swing.JTextField inputCity;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblCondition;
+    private javax.swing.JLabel lblHumidity;
+    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblTemp;
+    private javax.swing.JLabel lblWindSpeed;
     private javax.swing.JPanel panelUtama;
+    private javax.swing.JTable weatherTable;
     // End of variables declaration//GEN-END:variables
 }
