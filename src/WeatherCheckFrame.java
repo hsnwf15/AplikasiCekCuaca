@@ -172,6 +172,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel4.add(btnSaveToCSV, gridBagConstraints);
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -381,6 +386,18 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnSaveToCSVActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        inputCity.setText("");
+        lblCity.setText("");
+        lblTemp.setText("");
+        lblCondition.setText("");
+        lblWindSpeed.setText("");
+        lblHumidity.setText("");
+        lblIcon.setIcon(null);
+        DefaultTableModel model = (DefaultTableModel) weatherTable.getModel();
+        model.setRowCount(0);
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
