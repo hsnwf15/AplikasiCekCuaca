@@ -213,6 +213,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel1.add(lblCity, gridBagConstraints);
 
         btnAddToFavorites.setText("Favorit");
+        btnAddToFavorites.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToFavoritesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -326,6 +331,13 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnAddToFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToFavoritesActionPerformed
+        String city = inputCity.getText();
+        if (!city.isEmpty() && !favoritesComboBox.getItemAt(0).equals(city)) {
+            favoritesComboBox.addItem(city);
+        }
+    }//GEN-LAST:event_btnAddToFavoritesActionPerformed
 
     /**
      * @param args the command line arguments
