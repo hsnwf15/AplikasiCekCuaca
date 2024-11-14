@@ -57,7 +57,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         panelUtama.setLayout(new java.awt.GridBagLayout());
 
         jPanel4.setBackground(new java.awt.Color(33, 40, 50));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -173,7 +173,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         panelUtama.add(jPanel4, gridBagConstraints);
 
         jPanel5.setBackground(new java.awt.Color(99, 126, 190));
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         lblTemp.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -235,7 +235,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 75;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 9);
         jPanel2.add(inputCity, gridBagConstraints);
