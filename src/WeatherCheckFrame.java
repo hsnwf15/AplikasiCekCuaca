@@ -1,6 +1,8 @@
 
+import java.io.FileWriter;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONObject;
 
@@ -158,6 +160,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel4.add(jScrollPane1, gridBagConstraints);
 
         btnSaveToCSV.setText("Simpan ke CSV");
+        btnSaveToCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveToCSVActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -355,6 +362,25 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
             lblHumidity.getText()
         });
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnSaveToCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveToCSVActionPerformed
+        try (FileWriter csv = new FileWriter("weather_data.csv")) {
+            for (int i = 0; i < weatherTable.getColumnCount(); i++) {
+                csv.append(weatherTable.getColumnName(i)).append(",");
+            }
+            csv.append("\n");
+
+            for (int i = 0; i < weatherTable.getRowCount(); i++) {
+                for (int j = 0; j < weatherTable.getColumnCount(); j++) {
+                    csv.append(weatherTable.getValueAt(i, j).toString()).append(",");
+                }
+                csv.append("\n");
+            }
+            JOptionPane.showMessageDialog(this, "Data saved to CSV file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSaveToCSVActionPerformed
 
     /**
      * @param args the command line arguments
