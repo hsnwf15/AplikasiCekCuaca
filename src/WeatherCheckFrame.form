@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelUtama" alignment="1" pref="944" max="32767" attributes="0"/>
+          <Component id="panelUtama" alignment="1" pref="969" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelUtama" alignment="1" pref="518" max="32767" attributes="0"/>
+          <Component id="panelUtama" alignment="1" pref="507" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
