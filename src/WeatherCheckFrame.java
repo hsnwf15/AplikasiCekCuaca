@@ -1,6 +1,7 @@
 
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import org.json.JSONObject;
 
 /*
@@ -279,6 +280,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel5.add(lblIcon, gridBagConstraints);
 
         jButton4.setText("Tambah ke Tabel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -338,6 +344,17 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
             favoritesComboBox.addItem(city);
         }
     }//GEN-LAST:event_btnAddToFavoritesActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) weatherTable.getModel();
+        model.addRow(new Object[]{
+            lblCity.getText(),
+            lblTemp.getText(),
+            lblCondition.getText(),
+            lblWindSpeed.getText(),
+            lblHumidity.getText()
+        });
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
