@@ -116,6 +116,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         jPanel4.add(lblHumidity, gridBagConstraints);
 
+        favoritesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favoritesComboBoxActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -137,13 +142,10 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
 
         weatherTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Kota", "Suhu", "Kondisi Cuaca", "Kecepatan Angin", "Kelembapan"
             }
         ));
         jScrollPane1.setViewportView(weatherTable);
@@ -203,7 +205,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel5.add(lblTemp, gridBagConstraints);
 
-        lblCondition.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCondition.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblCondition.setForeground(new java.awt.Color(255, 255, 255));
         lblCondition.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -215,7 +217,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(99, 126, 190));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        lblCity.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCity.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblCity.setForeground(new java.awt.Color(255, 255, 255));
         lblCity.setText("-");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -234,6 +236,7 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(11, 0, 0, 0);
         jPanel1.add(btnAddToFavorites, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -284,7 +287,6 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel5.add(jPanel2, gridBagConstraints);
 
         lblIcon.setForeground(new java.awt.Color(255, 255, 255));
-        lblIcon.setText("icon");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -314,11 +316,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(panelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
         );
 
         pack();
@@ -335,11 +337,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
             int windSpeed = weatherData.getJSONObject("wind").getInt("speed");
             int humidity = weatherData.getJSONObject("main").getInt("humidity");
 
-            lblCity.setText("City: " + cityName);
-            lblTemp.setText("Temperature: " + temperature + "°C");
-            lblCondition.setText("Condition: " + condition);
-            lblWindSpeed.setText("Wind Speed: " + windSpeed + " m/s");
-            lblHumidity.setText("Humidity: " + humidity + "%");
+            lblCity.setText(cityName);
+            lblTemp.setText(temperature + "°C");
+            lblCondition.setText(condition);
+            lblWindSpeed.setText(windSpeed + " m/s");
+            lblHumidity.setText(humidity + "%");
 
             // Optional: Fetch and display icon
             String iconCode = weatherData.getJSONArray("weather").getJSONObject(0).getString("icon");
@@ -352,7 +354,17 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
 
     private void btnAddToFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToFavoritesActionPerformed
         String city = inputCity.getText();
-        if (!city.isEmpty() && !favoritesComboBox.getItemAt(0).equals(city)) {
+    
+        // Periksa apakah kota tidak kosong dan belum ada di JComboBox
+        boolean isCityAlreadyAdded = false;
+        for (int i = 0; i < favoritesComboBox.getItemCount(); i++) {
+            if (city.equals(favoritesComboBox.getItemAt(i))) {
+                isCityAlreadyAdded = true;
+                break;
+            }
+        }
+
+        if (!city.isEmpty() && !isCityAlreadyAdded) {
             favoritesComboBox.addItem(city);
         }
     }//GEN-LAST:event_btnAddToFavoritesActionPerformed
@@ -389,15 +401,22 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         inputCity.setText("");
-        lblCity.setText("");
-        lblTemp.setText("");
-        lblCondition.setText("");
-        lblWindSpeed.setText("");
-        lblHumidity.setText("");
+        lblCity.setText("-");
+        lblTemp.setText("-");
+        lblCondition.setText("-");
+        lblWindSpeed.setText("-");
+        lblHumidity.setText("-");
         lblIcon.setIcon(null);
         DefaultTableModel model = (DefaultTableModel) weatherTable.getModel();
         model.setRowCount(0);
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void favoritesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoritesComboBoxActionPerformed
+        String selectedCity = (String) favoritesComboBox.getSelectedItem();
+        if (selectedCity != null) {
+            inputCity.setText(selectedCity);
+        }
+    }//GEN-LAST:event_favoritesComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
