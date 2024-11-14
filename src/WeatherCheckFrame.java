@@ -1,3 +1,8 @@
+
+import java.net.URL;
+import javax.swing.ImageIcon;
+import org.json.JSONObject;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -241,6 +246,11 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
         jPanel2.add(inputCity, gridBagConstraints);
 
         btnSearch.setText("Cari");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -290,6 +300,32 @@ public class WeatherCheckFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        try {
+            String city = inputCity.getText();
+            JSONObject weatherData = WeatherAPI.getWeatherData(city);
+
+            String cityName = weatherData.getString("name");
+            double temperature = weatherData.getJSONObject("main").getDouble("temp");
+            String condition = weatherData.getJSONArray("weather").getJSONObject(0).getString("description");
+            int windSpeed = weatherData.getJSONObject("wind").getInt("speed");
+            int humidity = weatherData.getJSONObject("main").getInt("humidity");
+
+            lblCity.setText("City: " + cityName);
+            lblTemp.setText("Temperature: " + temperature + "°C");
+            lblCondition.setText("Condition: " + condition);
+            lblWindSpeed.setText("Wind Speed: " + windSpeed + " m/s");
+            lblHumidity.setText("Humidity: " + humidity + "%");
+
+            // Optional: Fetch and display icon
+            String iconCode = weatherData.getJSONArray("weather").getJSONObject(0).getString("icon");
+            lblIcon.setIcon(new ImageIcon(new URL("http://openweathermap.org/img/w/" + iconCode + ".png")));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
