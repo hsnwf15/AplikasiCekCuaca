@@ -34,7 +34,7 @@ Weather Checker App adalah aplikasi sederhana berbasis Java yang memungkinkan pe
   ![](mencarikota.PNG)
   
 - ### Menambahkan kota yang dicari ke dalam kategori favorit
-  ![](tambahfavorit.PNG)
+  ![](tambahfavorit.png)
   
 - ### Menambahkan hasil cari ke dalam table
   ![](simpantable.PNG)
