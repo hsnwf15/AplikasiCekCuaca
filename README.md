@@ -42,6 +42,9 @@ Weather Checker App adalah aplikasi sederhana berbasis Java yang memungkinkan pe
 - ### Menyimpan data yang ada di dalam table ke dalam bentuk file .csv
   ![](simpancsv.PNG)
 
+- ### hasil simpan ke file CSV
+  ![](simpan.PNG)
+
 ## Cara Penggunaan
 
 1. **Pencarian Kota**:  
